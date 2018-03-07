@@ -6,6 +6,7 @@ from urllib.parse import urljoin
 import click
 import requests
 
+
 logging.basicConfig(level=logging.DEBUG)
 
 class HTTPBearerAuthentication(requests.auth.AuthBase):
@@ -15,8 +16,6 @@ class HTTPBearerAuthentication(requests.auth.AuthBase):
     def __call__(self, r):
         r.headers['Authorization'] = 'Bearer {token}'.format(token=self._token)
         return r
-
-# eyJrIjoiaXNjbGRlY1pWWDczTG1idlNRVjE2VFBhSEd0dEJGelAiLCJuIjoiYW5kaSBub3RlYm9vayIsImlkIjoxfQ=="
 
 @click.command()
 @click.option('--api-key', help='API key of the target grafana', required=True, prompt=True)
