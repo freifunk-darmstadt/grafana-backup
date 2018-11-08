@@ -24,7 +24,15 @@ def backup(api_key, grafana_url):
     session = requests.Session()
     session.auth = HTTPBearerAuthentication(api_key)
 
-    data = session.get(urljoin(grafana_url, '/api/search')).json()
+
+    response = session.get(urljoin(grafana_url, '/api/search'))
+
+    if not response.ok:
+        click.secho("Request failed: {}".format(response), fg='red')
+        click.echo('Response: {}'.format(response.json()))
+        return 1
+
+    data = response.json()
     dashboards = [ entry for entry in data if entry['type'] == 'dash-db' ]
 
     for dashboard in dashboards:
