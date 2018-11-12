@@ -37,7 +37,7 @@ setup(
     install_requires=required,
     packages=find_packages(),
     entry_points={
-        'console_scripts': ['grafana-backup=grafana_backup:backup']
+        'console_scripts': ['grafana-backup=grafana_backup.__main__:backup']
     },
 )
 

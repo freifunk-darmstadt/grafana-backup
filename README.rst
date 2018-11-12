@@ -7,18 +7,11 @@ Create dashboards backups using the Grafana API.
 Installation
 ------------
 
-The latest stable version can be installed from PyPi:
+Use `setup.py` to install the package into your environment:
 
 ::
 
-    $ pip install kea-exporter
-
-
-and upgraded with:
-
-::
-
-    $ pip install --upgrade kea-exporter
+	$ python setup.py install
 
 
 Usage
